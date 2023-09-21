@@ -1,8 +1,8 @@
 #!/bin/bash
 
 convert_mp3() {
-    ffmpeg -hide_banner -nostats -vn -y -i "/watch/${file}" "/output/${file%.*}.mp3" && \
-    echo "converting $file"
+    ffmpeg -hide_banner -nostats -loglevel panic -vn -y -i "/watch/${file}" "/output/${file%.*}.mp3" && \
+    echo "converted ${file}"
 }
 
 while true; do
