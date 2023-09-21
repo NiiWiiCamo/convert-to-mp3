@@ -1,7 +1,7 @@
 #!/bin/bash
 
 convert_mp3() {
-    ffmpeg -hide_banner -nostats -vn -y -i "/watch/${file}" /output/${file%.*}.mp3 && \
+    ffmpeg -hide_banner -nostats -vn -y -i "/watch/${file}" "/output/${file%.*}.mp3" && \
     echo "converting $file"
 }
 
