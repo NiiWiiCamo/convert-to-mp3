@@ -11,7 +11,7 @@ while true; do
         if [ ${file##*.} == "mp4" ]
         then
             convert_mp3 && rm "/watch/${file// /_}/${file}"
-            mv "/watch/${file%.*}.jpg" "/watch/${file// /_}/poster.jpg
+            mv "/watch/${file%.*}.jpg" "/watch/${file// /_}/poster.jpg"
         fi
     done
 done
