@@ -6,9 +6,9 @@ convert_mp3() {
 }
 
 while true; do
-    inotifywait -t 5 -q -m /watch/ -e create -e moved_to --include '.*\.mp4$' | while read path action file
+    inotifywait -t 5 -m /watch/ -e create -e moved_to | while read path action file
     do
-        if [ ${file##*.} != "mp3" ]
+        if [ ${file##*.} = "mp4" ]
         then
             convert_mp3 && rm /watch/${file}
         fi
