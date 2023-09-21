@@ -1,7 +1,7 @@
 #!/bin/bash
 
 convert_mp3() {
-    ffmpeg -hide_banner -nostats -vn -y -i "/watch/$file" /output/${file%.*}.mp3 &
+    ffmpeg -hide_banner -nostats -vn -y -i "/watch/${file}" /output/${file%.*}.mp3 && \
     echo "converting $file"
 }
 
@@ -10,7 +10,7 @@ while true; do
     do
         if [ ${file##*.} == "mp4" ]
         then
-            convert_mp3 && rm "/watch/$file"
+            convert_mp3 && rm "/watch/${file}"
         fi
     done
 done
