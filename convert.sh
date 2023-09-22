@@ -8,8 +8,8 @@ OUTPUTFOLDER="/output"
 echo "looking for $FORMAT_IN files to convert to $FORMAT_OUT in $WATCHFOLDER"
 
 convert_format() {
-  echo "converting ${file} to ${file%.*}.${FORMAT_OUT}"
-  ffmpeg -hide_banner -nostats -loglevel panic -vn -y -i "${file}" "${file%.*}.${FORMAT_OUT}" && \
+  # echo "converting ${file} to ${file%.*}.${FORMAT_OUT}"
+  echo "ffmpeg -hide_banner -nostats -vn -y -i \"${file}\" \"${file%.*}.${FORMAT_OUT}\""
   echo "converted ${file}"
 }
 
@@ -31,8 +31,7 @@ do
     if [[ ${file##*.} == "${FORMAT_IN}" ]]
     then
       echo "mp4"
-      convert_format && \
-      remove_sourcefile
+      convert_format
     fi
   done
   sleep 5
