@@ -24,6 +24,7 @@ while $true:
 do
   for file in $(find ${WATCHFOLDER} -name "*.${FORMAT_IN}")
   do
+    echo "${file}"
     if [[ ${file##*.} == "${FORMAT_IN}" ]]
     then
       convert_format && \
