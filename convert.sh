@@ -29,6 +29,7 @@ do
   do
     echo "file: ${file}"
     dirname=$(dirname ${file})
+    echo "dirname: ${dirname}"
     if [[ ${file##*.} == "${FORMAT_IN}" ]]
     then
       echo "mp4"
