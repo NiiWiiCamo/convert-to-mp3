@@ -13,16 +13,16 @@ convert_format() {
 }
 
 remove_sourcefile() {
-  rm "$path/${file}"
+  rm "${path}/${file}"
 }
 
 move_directory() {
-  mv $path ${OUTPUTFOLDER}
+  mv ${path} ${OUTPUTFOLDER}
 }
 
 inotifywait -rm $WATCHFOLDER -e create| while read path action file
 do
-  echo "path: $path / $file"
+  echo "path: ${path} / ${file}"
   echo "action: $action"
   if [[ ${file##*.} == "${FORMAT_IN}" ]]
   then
