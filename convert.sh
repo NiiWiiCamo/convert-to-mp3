@@ -17,8 +17,8 @@ remove_sourcefile() {
 
 move_directory() {
   echo "move folder:"
-  echo "$(dirname ${file})"
-  echo "${file}"
+  echo "${dirname}"
+  # echo "${file}"
   # mv ${WATCHFOLDER} ${OUTPUTFOLDER}
 }
 
@@ -28,6 +28,7 @@ do
   while IFS= read -r -d '' file
   do
     echo "file: ${file}"
+    dirname=$(dirname ${file})
     if [[ ${file##*.} == "${FORMAT_IN}" ]]
     then
       echo "mp4"
