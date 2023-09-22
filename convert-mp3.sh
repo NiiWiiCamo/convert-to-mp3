@@ -1,7 +1,7 @@
 #!/bin/bash
 
-FORMAT_IN=${FORMAT_IN:"mp4"}
-FORMAT_OUT=${FORMAT_OUT:"mp3"}
+# FORMAT_IN=${FORMAT_IN:"mp4"}
+# FORMAT_OUT=${FORMAT_OUT:"mp3"}
 WATCHFOLDER="/watch"
 OUTPUTFOLDER="/output"
 
