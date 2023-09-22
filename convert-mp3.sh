@@ -5,6 +5,8 @@ FORMAT_OUT=${FORMAT_OUT:"mp3"}
 WATCHFOLDER="/watch"
 OUTPUTFOLDER="/output"
 
+echo "looking for $FORMAT_IN files to convert to $FORMAT_OUT"
+
 convert_format() {
   ffmpeg -hide_banner -nostats -loglevel panic -vn -y -i "$path/${file}" "$path/${file%.*}.${FORMAT_OUT}" && \
   echo "converted ${file}"
