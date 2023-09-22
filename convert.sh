@@ -11,8 +11,8 @@ convert_format() {
 }
 
 remove_sourcefile() {
-  echo "removing source file"
-  rm "${file}"
+  echo "NOT removing source file"
+  # rm "${file}"
 }
 
 move_directory() {
