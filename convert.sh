@@ -17,20 +17,19 @@ remove_sourcefile() {
 }
 
 move_directory() {
-  mv ${path} ${OUTPUTFOLDER}
+  mv ${WATCHFOLDER} ${OUTPUTFOLDER}
 }
 
 while $true:
 do
-  find ${WATCHFOLDER} -name "*.${FORMAT_IN}" |
+  find ${WATCHFOLDER} -name "*.${FORMAT_IN}" -print0 |
   while IFS= read -r -d '' file
   do
     echo "${file}"
     if [[ ${file##*.} == "${FORMAT_IN}" ]]
     then
       convert_format && \
-      remove_sourcefile && \
-      move_directory
+      remove_sourcefile
     fi
   done
 done
