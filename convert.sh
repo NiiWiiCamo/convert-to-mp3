@@ -14,6 +14,7 @@ convert_format() {
 }
 
 remove_sourcefile() {
+  echo "removing source file"
   rm "${file}"
 }
 
