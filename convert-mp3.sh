@@ -18,14 +18,12 @@ move_directory() {
   mv $path ${OUTPUTFOLDER}
 }
 
-while true; do
-  inotifywait -m $WATCHFOLDER -e close -e moved_to | while read path action file
-  do
-    if [ ${file##*.} == "${FORMAT_IN}" ]
-    then
-      convert_format && \
-      remove_sourcefile && \
-      move_directory
-    fi
-  done
+inotifywait -m $WATCHFOLDER -e close -e moved_to | while read path action file
+do
+  if [[ ${file##*.} == "${FORMAT_IN}" ]]
+  then
+    convert_format && \
+    remove_sourcefile && \
+    move_directory
+  fi
 done
