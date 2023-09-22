@@ -31,7 +31,8 @@ do
     if [[ ${file##*.} == "${FORMAT_IN}" ]]
     then
       echo "mp4"
-      convert_format
+      convert_format && \
+      remove_sourcefile
     fi
   done
   sleep 5
