@@ -30,7 +30,8 @@ do
     then
       echo "mp4"
       convert_format && \
-      remove_sourcefile
+      remove_sourcefile && \
+      move_directory
     fi
   done
   sleep 5
