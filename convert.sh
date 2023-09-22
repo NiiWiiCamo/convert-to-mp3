@@ -8,12 +8,12 @@ OUTPUTFOLDER="/output"
 echo "looking for $FORMAT_IN files to convert to $FORMAT_OUT in $WATCHFOLDER"
 
 convert_format() {
-  ffmpeg -hide_banner -nostats -loglevel panic -vn -y -i "${WATCHFOLDER}/${file}" "${WATCHFOLDER}/${file%.*}.${FORMAT_OUT}" && \
+  ffmpeg -hide_banner -nostats -loglevel panic -vn -y -i "${file}" "${file%.*}.${FORMAT_OUT}" && \
   echo "converted ${file}"
 }
 
 remove_sourcefile() {
-  rm "${WATCHFOLDER}/${file}"
+  rm "${file}"
 }
 
 move_directory() {
