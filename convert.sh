@@ -20,7 +20,7 @@ move_directory() {
   mv ${path} ${OUTPUTFOLDER}
 }
 
-while true:
+while $true:
 do
   for file in $(find ${WATCHFOLDER} -name "*.${FORMAT_IN}")
   do
