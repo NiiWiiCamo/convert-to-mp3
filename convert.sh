@@ -3,6 +3,8 @@
 WATCHFOLDER="/watch"
 OUTPUTFOLDER="/output"
 
+OLDIFS=$IFS
+
 echo "looking for $FORMAT_IN files to convert to $FORMAT_OUT in $WATCHFOLDER"
 
 convert_format() {
