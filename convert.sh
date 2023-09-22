@@ -6,7 +6,7 @@ OUTPUTFOLDER="/output"
 echo "looking for $FORMAT_IN files to convert to $FORMAT_OUT in $WATCHFOLDER"
 
 convert_format() {
-  ffmpeg -nostdin -hide_banner -nostats -vn -y -i "${file}" "${file%.*}.${FORMAT_OUT}"
+  ffmpeg -nostdin -hide_banner -nostats -loglevel panic -vn -y -i "${file}" "${file%.*}.${FORMAT_OUT}"
   echo "converted ${file}"
 }
 
@@ -16,7 +16,9 @@ remove_sourcefile() {
 }
 
 move_directory() {
-  echo "move folder: $(dirname ${file})"
+  echo "move folder:"
+  echo "$(dirname ${file})"
+  echo "${file}"
   # mv ${WATCHFOLDER} ${OUTPUTFOLDER}
 }
 
