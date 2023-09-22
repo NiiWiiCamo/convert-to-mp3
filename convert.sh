@@ -28,7 +28,7 @@ do
   while IFS= read -r -d '' file
   do
     echo "file: ${file}"
-    dirname=$(dirname ${file})
+    dirname="$(dirname ${file})"
     echo "dirname: ${dirname}"
     if [[ ${file##*.} == "${FORMAT_IN}" ]]
     then
