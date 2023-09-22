@@ -8,6 +8,7 @@ OUTPUTFOLDER="/output"
 echo "looking for $FORMAT_IN files to convert to $FORMAT_OUT in $WATCHFOLDER"
 
 convert_format() {
+  echo "converting ${file} to ${file%.*}.${FORMAT_OUT}"
   ffmpeg -hide_banner -nostats -loglevel panic -vn -y -i "${file}" "${file%.*}.${FORMAT_OUT}" && \
   echo "converted ${file}"
 }
