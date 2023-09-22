@@ -18,7 +18,7 @@ move_directory() {
   mv $path ${OUTPUTFOLDER}
 }
 
-inotifywait -r -m $WATCHFOLDER -e close -e moved_to -e create | while read path action file
+inotifywait -rm $WATCHFOLDER -e close -e moved_to -e create -e modify | while read path action file
 do
   if [[ ${file##*.} == "${FORMAT_IN}" ]]
   then
