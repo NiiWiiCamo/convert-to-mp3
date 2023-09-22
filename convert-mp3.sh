@@ -1,17 +1,31 @@
 #!/bin/bash
 
-convert_mp3() {
-    ffmpeg -hide_banner -nostats -q -loglevel panic -vn -y -i "/watch/${file}" "/output/${file%.*}.mp3" && \
-    echo "converted ${file}"
+FORMAT_IN=${FORMAT_IN:"mp4"}
+FORMAT_OUT=${FORMAT_OUT:"mp3"}
+WATCHFOLDER="/watch"
+OUTPUTFOLDER="/output"
+
+convert_format() {
+  ffmpeg -hide_banner -nostats -loglevel panic -vn -y -i "$path/${file}" "$path/${file%.*}.${FORMAT_OUT}" && \
+  echo "converted ${file}"
+}
+
+remove_sourcefile() {
+  rm "$path/${file}"
+}
+
+move_directory() {
+  mv $path ${OUTPUTFOLDER}
 }
 
 while true; do
-    inotifywait -t 5 -m /watch -e create -e moved_to -e modify | while read path action file
-    do
-        if [ ${file##*.} == "mp4" ]
-        then
-            convert_mp3 && rm "/watch/${file// /_}/${file}"
-            mv "/watch/${file%.*}.jpg" "/watch/${file// /_}/poster.jpg"
-        fi
-    done
+  inotifywait -m $WATCHFOLDER -e close -e moved_to | while read path action file
+  do
+    if [ ${file##*.} == "${FORMAT_IN}" ]
+    then
+      convert_format && \
+      remove_sourcefile && \
+      move_directory
+    fi
+  done
 done
