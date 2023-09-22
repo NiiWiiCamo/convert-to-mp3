@@ -20,14 +20,15 @@ move_directory() {
   mv ${path} ${OUTPUTFOLDER}
 }
 
-inotifywait -rm $WATCHFOLDER -e create| while read path action file
+while true:
 do
-  echo "path: ${path} / ${file}"
-  echo "action: $action"
-  if [[ ${file##*.} == "${FORMAT_IN}" ]]
-  then
-    convert_format && \
-    remove_sourcefile && \
-    move_directory
-  fi
+  for file in $(find ${WATCHFOLDER} -name "*.${FORMAT_IN}")
+  do
+    if [[ ${file##*.} == "${FORMAT_IN}" ]]
+    then
+      convert_format && \
+      remove_sourcefile && \
+      move_directory
+    fi
+  done
 done
